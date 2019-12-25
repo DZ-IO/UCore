@@ -3,10 +3,10 @@ REM  QBFC Project Options Begin
 REM HasVersionInfo: Yes
 REM Companyname: ZdaTek
 REM Productname: ZOSP
-REM Filedescription: UCore-The UTAU Core
+REM Filedescription: UCore_CLI-The UTAU Core CLI Version
 REM Copyrights: Copyleft ! 2019， 大泽。版权部分所有，遵循GNU GPL v3.0授权使用。
 REM Trademarks: 
-REM Originalname: UCore.bat
+REM Originalname: UCore_CLI.bat
 REM Comments: 项目官网：https://github.com/daze456/UCore
 REM Productversion:  0. 1. 0.25
 REM Fileversion:  0. 0. 1.24
@@ -36,5 +36,5 @@ FOR /F "delims=[#" %%i IN ("%notes%") DO (
     )
 )
 if %notes%.==SETTING. Start %~dp0UCore.cmd Config
-if not %notes%.==SETTING. if not %notes%.==. Start /w %~dp0UCore.cmd %~dp0cache\temp.ini
+if not %notes%.==SETTING. if not %notes%.==. call %~dp0UCore.cmd %~dp0cache\temp.ini q
 :end

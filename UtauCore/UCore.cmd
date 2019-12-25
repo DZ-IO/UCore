@@ -12,18 +12,17 @@ goto Synth
 :Synth
 title UCore合成中
 
-for /f %%i in ('rini %1 #SETTING ProjectName') do set ProjectName=%%i
+for /f %%i in ('%~dp0rini %1 #SETTING ProjectName') do set ProjectName=%%i
 title %ProjectName% - UCore合成中
-for /f %%i in ('rini %1 #SETTING Tempo') do set tempo=%%i
+for /f %%i in ('%~dp0rini %1 #SETTING Tempo') do set tempo=%%i
 set samples=44100
-for /f %%i in ('rini %1 #SETTING VoiceDir') do IF EXIST %%i\* set oto=%%i
-for /f %%i in ('rini %1 #SETTING Tool1') do IF EXIST %%i set tool=%%i
-for /f %%i in ('rini %1 #SETTING Tool2') do IF EXIST %%i set resamp=%%i
-if %output%.==. set output=%CD%\temp.wav
-if %cachedir%.==. for /f %%i in ('rini %1 #SETTING CacheDir') do IF not %%i.==. set cachedir=%%i
+for /f %%i in ('%~dp0rini %1 #SETTING VoiceDir') do IF EXIST %%i\* set oto=%%i
+for /f %%i in ('%~dp0rini %1 #SETTING Tool1') do IF EXIST %%i set tool=%%i
+for /f %%i in ('%~dp0rini %1 #SETTING Tool2') do IF EXIST %%i set resamp=%%i
+if %cachedir%.==. for /f %%i in ('%~dp0rini %1 #SETTING CacheDir') do IF not %%i.==. set cachedir=%%i
 if %cachedir%.==. set cachedir=%~dp0cache
 mkdir %cachedir%
-set helper=helper.bat
+set helper=%~dp0helper.bat
 @set flag=""
 @set env=0 5 35 0 100 100 0
 @set stp=0
@@ -53,6 +52,7 @@ goto :OK
 :E
 echo [ERR]合成出现错误
 :OK
+if %2.==q. goto end
 pause
 exit
 
@@ -67,9 +67,9 @@ FOR /F "delims=[#" %%i IN ("%1") DO FOR /F "delims=]" %%i IN ("%%i") DO (
 goto :eof
 
 :synthmain
-for /f %%i in ('rini %1 #!num! Length') do set Length=%%i
+for /f %%i in ('%~dp0rini %1 #!num! Length') do set Length=%%i
 echo [INFO]长度:!Length!
-for /f %%i in ('rini %1 #!num! Lyric') do set Lyric=%%i
+for /f %%i in ('%~dp0rini %1 #!num! Lyric') do set Lyric=%%i
 if !Lyric!==R (
   echo [INFO]R
   echo [INFO]执行:"!tool!" "!output!" "!oto!\R.wav" 0 !Length!@!tempo!+.0 0 0
@@ -81,10 +81,10 @@ if !Lyric!==R (
 goto :eof
 
 :synthnote
-for /f %%i in ('rini %1 #!num! NoteNum') do set NoteNum=%%i
-for /f "eol=; tokens=1,2 delims==" %%i in (notes.txt) do if %%j==%NoteNum% set NoteNum=%%i
+for /f %%i in ('%~dp0rini %1 #!num! NoteNum') do set NoteNum=%%i
+for /f "eol=; tokens=1,2 delims==" %%i in (%~dp0notes.txt) do if %%j==%NoteNum% set NoteNum=%%i
 echo [INFO]音符:!NoteNum!
-for /f %%i in ('rini %1 #!num! Velocity') do set vel=%%i
+for /f %%i in ('%~dp0rini %1 #!num! Velocity') do set vel=%%i
 echo [INFO]速度:!vel!
 set params=100 100 %%tempo! AA#35#ABABACACADADAEAFAFAGAGAH#4#AGAGAFAEADACAA///9/8/6/4/2/1/z/y/w/v/u/u/t/t/u/u/v/w/y/0/2/4/7/+AA#13#
 set env=10 139 35 101 101 101 0 0 0
@@ -97,5 +97,8 @@ goto :eof
 mode con: cols=50 lines=4
 title UCore错误
 ECHO [ERR]您输入的是空文件！
+if %2.==q. goto end
 pause
 exit
+
+:end
