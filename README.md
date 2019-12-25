@@ -24,7 +24,8 @@ PS3：缓存文件夹默认为`%~dp0cache`（`.\UtauCore\cache`）输出文件�
 ### 3. 使用：
 `.\UtauCore\UCore[_CLI].exe <UST文件>`  
 `<UST文件> UTAU的工程文件`  
-`[_CLI] 启用纯CLI模式（无弹窗，适合在应用程序内调用）` 
+`[_CLI] 启用纯CLI模式（无弹窗，适合在应用程序内调用）`   
+PS：输出文件在UST同目录下
 ## 使用例：
 1. 类似口袋歌姬的在线合成服务
 2. 在游戏 OR 软件中使用UTAU的技术（类似VOCALOID SDK for Unity）
