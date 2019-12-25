@@ -34,7 +34,7 @@ PS：输出文件在UST同目录下
 2. 合成速度过慢
 ## 开发灵感
 最初是因为看到了B站的[星璇の天空](https://space.bilibili.com/232240)开发的[UTAU渲染插件](https://www.bilibili.com/video/av1182545)，然后这个插件里带了个完整版UTAU。。。  
-![完整版UTAU](pics\01.png)
+![完整版UTAU](PICS/01.png)
 于是我就有了把这个U干掉的想法  
 由于UTAU和UST并不复杂，我断断续续花了3天搞出了第一个测试版  
 然而这个测试版并不好用，比如不支持有参工程（实际上支持VEL参数）
