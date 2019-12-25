@@ -20,7 +20,7 @@
 `;output=`  
 PS1：声库、工具1、工具2 遵循UST优先逻辑（即本机已安装UST中指定的声库和引擎时默认使用UST推荐的声库和引擎）  
 PS2：缓存文件夹和输出文件遵循配置文件优先逻辑  
-PS3：缓存文件夹默认为`%~dp0cache`（`.\UtauCore\cache`）输出文件默认为`%CD%\temp.wav`(工程文件所在目录\temp.wav)
+PS3：缓存文件夹默认为`%~dp0cache`（`.\UtauCore\cache`）输出文件默认为`%1.wav`(工程文件所在目录\工程文件名.ust.wav)
 ### 3. 使用：
 `.\UtauCore\UCore[_CLI].exe <UST文件>`  
 `<UST文件> UTAU的工程文件`  
