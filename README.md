@@ -1,4 +1,5 @@
 # UCore - 一个面向CLI的UTAU核心
+注意：大泽将在2020.5.7停止对UC1的所有技术支持，欢迎试试[UC2](https://github.com/daze456/ZdaUTAUCore2)
 ## 概述
 这是一个面向CLI（命令行）的UTAU核心  
 至于为什么叫核心？因为本软件不带任何图形前端，依靠UST文件传导数据
